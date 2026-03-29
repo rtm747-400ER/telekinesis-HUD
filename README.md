@@ -23,7 +23,7 @@
  
 > ![Telekinesis-HUD Demo Screenshot](assets/screenshot1.png)
  
-> ![Telekinesis-HUD Live Demo](Telekinesis-HUD-demo.mp4)
+> ![Telekinesis-HUD Live Demo](assets/Telekinesis-HUD-demo.mp4)
  
 *Real-time gesture recognition running at HD resolution. The frosted-glass HUD overlays gesture state and active OS action without obscuring the camera feed.*
  
