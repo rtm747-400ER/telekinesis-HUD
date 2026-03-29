@@ -1,5 +1,5 @@
 import torch
-from torch.utils.data import Dataset, DataLoader # DataLoader isn't really gonna be used here actually but oh well
+from torch.utils.data import Dataset, DataLoader
 import pandas as pd
     
 import torch.nn as nn
@@ -21,7 +21,7 @@ class GestureDataset(Dataset):
         self.Y = torch.tensor(raw_y, dtype=torch.long)
 
     def __len__(self):
-        # Pytotoorch needs to know exactly how many rows of data exist
+        # Pytorch needs to know exactly how many rows of data exist
         return len(self.data)
 
     def __getitem__(self, idx):
@@ -63,25 +63,24 @@ import torch.optim as optim
 if __name__ == "__main__":
     print("--- INITIALIZING TRAINING ENGINE ---")
     
-    # 1. Load the Data
+    # Data Loading
     dataset = GestureDataset('gesture_dataset.csv')
     dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
     
-    # 2. Boot up the Motherboard
+    # Booting up the brain
     brain = GestureNetwork()
     
-    # 3. Hire the Grader (Loss) and the Mechanic (Optimizer)
+    # Loss and Optimizer
     criterion = nn.CrossEntropyLoss() 
     optimizer = optim.Adam(brain.parameters(), lr=0.001) 
-    
-    # 4. The Epoch Loop
+
     epochs = 50
     print("--- STARTING TRAINING ---")
     
     for epoch in range(epochs):
         for batch_x, batch_y in dataloader:
             
-            # Forward Pass: AI guesses the gesture
+            # Forward Pass: Gesture guessing
             predictions = brain(batch_x)
             
             # Loss: We calculate how wrong the guess was
@@ -96,6 +95,6 @@ if __name__ == "__main__":
         if (epoch + 1) % 5 == 0:
             print(f"Epoch {epoch+1}/{epochs} | Error Score (Loss): {loss.item():.4f}")
 
-    # 5. Freeze the math and save the file
+    # Freeze the math and save the file
     torch.save(brain.state_dict(), 'gesture_model.pth')
     print("--- TRAINING COMPLETE: Model saved as 'gesture_model.pth' ---")

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-# Apple Design Colors (BGR)
+# Design Colors (BGR)
 APPLE_BLUE = (255, 170, 50) 
 TEXT_WHITE = (240, 240, 240)
 TEXT_GRAY = (180, 180, 180)
@@ -32,7 +32,7 @@ def draw_skeleton(frame, landmarks, w, h):
 
 def draw_liquid_hud(frame, gesture, action, action_color):
     h, w, _ = frame.shape
-    hud_height = 110 # Tuned for 640 height
+    hud_height = 110 
     hud_y = h - hud_height
     roi = frame[hud_y:h, 0:w]
     blurred = cv2.GaussianBlur(roi, (55, 55), 0)
@@ -48,7 +48,7 @@ def draw_liquid_hud(frame, gesture, action, action_color):
 
 def draw_info_panel(frame, show_panel, instructions):
     if show_panel:
-        p_w, p_h = 420, 240 # Tuned for 860 width
+        p_w, p_h = 420, 240 
         p_x, p_y = 15, 15
         roi = frame[p_y:p_y+p_h, p_x:p_x+p_w]
         blurred = cv2.GaussianBlur(roi, (55, 55), 0)

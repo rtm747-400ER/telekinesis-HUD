@@ -74,8 +74,6 @@ while cap.isOpened():
             
             # Extract all 42 coordinates (21 X's and 21 Y's)
             for tip in landmarks:
-                # Notice we keep them as normalized decimals (0.0 to 1.0)
-                # PyTorch loves small decimal numbers!
                 row.extend([tip.x, tip.y]) 
             
             # Append this specific frame's data to the CSV
@@ -88,7 +86,7 @@ while cap.isOpened():
             # UI Visual Feedback
             cv2.putText(frame, f"RECORDING {gesture_names[current_label]}: {frames_recorded}/{MAX_FRAMES}", 
                         (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-            cv2.rectangle(frame, (0,0), (w,h), (0, 0, 255), 5) # Draw a red border
+            cv2.rectangle(frame, (0,0), (w,h), (0, 0, 255), 5)
             
         elif recording and frames_recorded >= MAX_FRAMES:
             recording = False # Auto-stop the recording when we hit 500
